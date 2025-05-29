@@ -954,36 +954,39 @@ body {
 
 
         .chatbot-popup {
-            display: none; /* Oculto por defecto */
-            position: fixed;
-            bottom: -75px; /* Espacio entre el botón y la ventana */
-            right: 150px;
-            width: 450px; /* Ancho de la ventana, ajusta según el tamaño del chatbot */
-            height: 600px; /* Alto de la ventana, ajusta según el tamaño del chatbot */
-            border: 1px solid #cccccc00;
-            border-radius: 22px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
-            background-color: rgba(255, 255, 255, 0);
-            z-index: 1000;
-            opacity: 0; /* Inicialmente invisible */
-            transform: translateY(20px); /* Desplazado hacia abajo */
-            transition: opacity 1.5s ease, transform 1.5s ease; /* Animación */
-        }
-        
-        .chatbot-popup.show {
-            display: block; /* Mostrar la ventana */
-            opacity: 1; /* Hacerla visible */
-            transform: translateY(0); /* Regresar a su posición original */
-        }
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    bottom: 20px; /* Espacio desde el fondo */
+    right: 20px; /* Espacio desde la derecha */
+    width: 450px; /* Ancho de la ventana del chatbot */
+    height: 600px; /* Alto de la ventana del chatbot */
+    border: 1px solid #cccccc00;
+    border-radius: 22px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+    background-color: white; /* Fondo blanco */
+    z-index: 1000;
+    transition: all 0.3s ease; /* Transición suave */
+}
 
+.chatbot-iframe {
+    width: 100%;
+    height: 100%;
+    border: none; /* Sin borde */
+    border-radius: 22px; /* Bordes redondeados */
+}
 
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red; /* Color de fondo del botón de cerrar */
+    color: white; /* Color del texto */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
 
-        .chatbot-iframe {
-            width: 417px;
-            height: 595px;
-            border: none; /* Sin borde */
-            border-radius: 10px; /* Bordes redondeados */
-        }
 
 /* Animaciones */
 @keyframes fadeInUp {
@@ -1317,16 +1320,17 @@ html {
         </div>
     </section>
 
-   <section>
-            <div id="chatbot-button" class="chatbot-button">
-                <img src="ambar3.0.png" alt="Chat" class="chatbot-icon"> <!-- Imagen del botón -->
-                <div class="tooltip">Soy Ambar, ¿en que te puedo ayudar?</div> <!-- Tooltip -->
-            </div>
-            <div id="chatbot-popup" class="chatbot-popup">
-                <iframe src="https://bot.orimon.ai/deploy/index.html?tenantId=0374cec7-ec14-4085-94b3-3aa734a598e6&testBot=true&defaultOpen=true" class="chatbot-iframe"></iframe>
-            </div>
+<section>
+    <div id="chatbot-button" class="chatbot-button" onclick="toggleChatbot()">
+        <img src="ambar3.0.png" alt="Chat" class="chatbot-icon"> <!-- Imagen del botón -->
+        <div class="tooltip">Soy Ambar, ¿en que te puedo ayudar?</div> <!-- Tooltip -->
+    </div>
+    <div id="chatbot-popup" class="chatbot-popup" style="display: none;">
+        <iframe src="https://bot.orimon.ai/deploy/index.html?tenantId=0374cec7-ec14-4085-94b3-3aa734a598e6&testBot=true&defaultOpen=true" class="chatbot-iframe"></iframe>
+        <button class="close-button" onclick="toggleChatbot()">Cerrar</button>
+    </div>
+</section>
 
-        </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -1758,10 +1762,14 @@ html {
             toggleMenu: () => toggleMobileMenu()
         };
 
-        document.getElementById('chatbot-button').addEventListener('click', function() {
-        const popup = document.getElementById('chatbot-popup');
-        popup.classList.toggle('show'); // Alternar la clase 'show' para abrir y cerrar
-    });
+        function toggleChatbot() {
+    const chatbotPopup = document.getElementById('chatbot-popup');
+    if (chatbotPopup.style.display === "none" || chatbotPopup.style.display === "") {
+        chatbotPopup.style.display = "block"; // Mostrar el chatbot
+    } else {
+        chatbotPopup.style.display = "none"; // Ocultar el chatbot
+    }
+}
 
     </script>
 </body>
