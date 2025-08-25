@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./images/isotipo.jpeg" type="image/png" />
+    <title>AdminLine</title>
+    <meta name="description" content="Impulsamos el crecimiento de tu empresa con soluciones innovadoras" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary-color: #8b5cf6;
+    --text-dark: #1f2937;
+    --text-gray: #6b7280;
+    --text-light: #9ca3af;
+    --bg-light: #f8fafc;
+    --bg-white: #ffffff;
+    --border-color: #e5e7eb;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --gradient-primary: linear-gradient(135deg, #2563eb, #8b5cf6);
+    --gradient-bg: linear-gradient(135deg, #f8fafc, #e0f2fe);
+    --border-radius: 0.5rem;
+    --border-radius-lg: 1rem;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--gradient-bg);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-gray);
+    max-width: 48rem;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.875rem;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-outline {
+    background: white;
+    color: var(--text-gray);
+    border: 1px solid var(--border-color);
+}
+
+.btn-outline:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.arrow {
+    transition: var(--transition);
+}
+
+.btn:hover .arrow {
+    transform: translateX(4px);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #000000f2;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 45px;
+}
+
+.logo-imagotipo {
+    height: 335%;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+}
+
+.nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    color:#efefef;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    align-items: center;
+}
+
+.hamburger {
+    width: 1.5rem;
+    height: 2px;
+    background: var(--text-dark);
+    margin: 2px 0;
+    transition: var(--transition);
+}
+
+.nav-mobile {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(139, 92, 246, 0.9);
+    border-top: 1px solid var(--border-color);
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out, visibility 0.5s ease-out;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    width: 100%;
+}
+
+.nav-mobile.active {
+    max-height: 500px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-link-mobile {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: var(--transition);
+}
+
+.nav-link-mobile:hover {
+    color: var(--primary-color);
+}
+
+.mobile-btn {
+    width: fit-content;
+}
+
+.hero-image-area {
+    width: 100%;
+    max-width: 600px;
+    margin: -3rem auto 0;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+}
+
+.hero-placeholder-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: var(--transition);
+    mask-image: linear-gradient( black 330px,transparent);
+}
+
+.hero-placeholder-image:hover {
+    transform: scale(1.02);
+}
+
+.hero {
+    padding: 8rem 1rem 3rem;
+    background: var(--gradient-bg);
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.services {
+    padding: 5rem 1rem;
+    background: white;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+
+.service-card {
+    background: white;
+    border-radius: var(--border-radius-lg);
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.service-card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.service-card:hover .service-card-image {
+    transform: scale(1.1);
+}
+
+.service-card-content {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.service-description {
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.about {
+    padding: 5rem 1rem;
+    background: var(--gradient-bg);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-description {
+    margin-bottom: 2rem;
+}
+
+.about-description p {
+    color: var(--text-gray);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.stat-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5rem;
+}
+
+.stat-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--text-gray);
+}
+
+.about-images {
+    position: relative;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.image-grid img {
+    width: 100%;
+    height: 12.5rem;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.image-offset {
+    margin-top: 2rem;
+}
+
+.image-negative-offset {
+    margin-top: -2rem;
+}
+
+.contact {
+    padding: 5rem 1rem;
+    background: white;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.contact-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.contact-description {
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+    background: var(--gradient-primary);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.contact-details h4 {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+}
+
+.contact-details a {
+    color: var(--text-gray);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-details a:hover {
+    color: var(--primary-color);
+}
+
+.contact-details iframe {
+    max-width: 100%;
+    height: 150px;
+    border-radius: var(--border-radius);
+    border: 0;
+}
+
+.form-card {
+    background: white;
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+}
+
+.form-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+    background: white;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.send-icon {
+    transition: var(--transition);
+}
+
+.btn:hover .send-icon {
+    transform: translateX(4px);
+}
+
+.footer {
+    background: #1f2937;
+    color: white;
+    padding: 3rem 1rem 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-description {
+    color: #9ca3af;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    width: 2rem;
+    height: 2rem;
+    background: none;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    background: none;
+}
+
+.footer-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: #9ca3af;
+}
+
+.contact-item .contact-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #374151;
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-legal a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: var(--transition);
+}
+
+.footer-legal a:hover {
+    color: white;
+}
+
+.toast {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    padding: 1rem;
+    z-index: 1001;
+    transform: translateX(120%);
+    transition: transform 0.3s ease-in-out;
+    border: 1px solid var(--border-color);
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.toast-icon {
+    font-size: 1.25rem;
+}
+
+.toast-title {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.toast-message {
+    font-size: 0.875rem;
+    color: var(--text-gray);
+}
+
+/* Responsive Design */
+@media (min-width: 1024px) {
+    .hero-content {
+        flex-direction: row;
+        gap: 4rem;
+        text-align: left;
+    }
+    
+    .hero-text {
+        text-align: left;
+        flex: 1;
+    }
+    
+    .hero-image-area {
+        flex: 1;
+        margin: 0;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(4, 1fr); /* << FIX: 4 columnas en PC */
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-desktop {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .hero-image-area {
+        order: -1; /* Mueve la imagen arriba en móvil */
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.5rem;
+    }
+
+    .hero {
+        padding: 6rem 0.5rem 2rem;
+    }
+
+    .services,
+    .about,
+    .contact {
+        padding: 3rem 0.5rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .image-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .image-offset,
+    .image-negative-offset {
+        margin-top: 0;
+    }
+    .contact-details iframe {
+        height: 120px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+#chatbotLink {
+    position: fixed;
+    bottom: -1rem;
+    right: 1rem;
+    z-index: 1000;
+    cursor: pointer;
+}
+#chatbotLink img {
+    max-width: 137px;
+    height: auto;
+    transition: transform 0.2s;
+}
+#chatbotLink:hover img {
+    transform: scale(1.1);
+}
+
+.animated-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animated-element.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FIX: Custom Scrollbar Restaurado */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-light);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #7c3aed;
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="./images/codigo html.png" alt="Logo de AdminLine" class="logo-imagotipo">
+                </div>
+                <nav class="nav-desktop">
+                    <a href="#inicio" class="nav-link">Inicio</a>
+                    <a href="#servicios" class="nav-link">Servicios</a>
+                    <a href="#nosotros" class="nav-link">Nosotros</a>
+                    <a href="#contacto" class="nav-link">Contacto</a>
+                </nav>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+                <nav class="nav-mobile" id="mobileNav">
+                    <a href="#inicio" class="nav-link-mobile" onclick="closeMobileMenu()">Inicio</a>
+                    <a href="#servicios" class="nav-link-mobile" onclick="closeMobileMenu()">Servicios</a>
+                    <a href="#nosotros" class="nav-link-mobile" onclick="closeMobileMenu()">Nosotros</a>
+                    <button class="btn btn-primary mobile-btn" onclick="scrollToSection('contacto'); closeMobileMenu();">Cotizar</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text animated-element">
+                        <div class="hero-badge">✨ Soluciones empresariales de calidad</div>
+                        <h1 class="hero-title">Impulsamos el <span class="gradient-text">crecimiento</span> de tu empresa</h1>
+                        <p class="hero-subtitle">Ofrecemos soluciones innovadoras y personalizadas para llevar tu negocio al siguiente nivel. Confía en nuestra experiencia y dedicación.</p>
+                    </div>
+                    <div class="hero-image-area animated-element">
+                        <img src="./images/img inicio.png" alt="Equipo de trabajo colaborando en un proyecto" class="hero-placeholder-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="services">
+            <div class="container">
+                <div class="section-header animated-element">
+                    <div class="badge">Nuestros Servicios</div>
+                    <h2 class="section-title">Soluciones completas para tu empresa</h2>
+                    <p class="section-subtitle">Ofrecemos una gama completa de servicios diseñados para cubrir las necesidades de tu negocio.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card animated-element" style="transition-delay: 0.1s;">
+                        <img src="./images/gestion de ventas.webp" alt="Gestión de ventas" class="service-card-image">
+                        <div class="service-card-content">
+                            <h3 class="service-title">Gestión de ventas</h3>
+                            <p class="service-description">Estrategias y herramientas para potenciar tu equipo comercial, optimizar el ciclo de ventas e incrementar tus ingresos.</p>
+                        </div>
+                    </div>
+                    <div class="service-card animated-element" style="transition-delay: 0.2s;">
+                        <img src="./images/capacitacion de personal.webp" alt="Capacitación de personal" class="service-card-image">
+                        <div class="service-card-content">
+                            <h3 class="service-title">Capacitación del personal</h3>
+                            <p class="service-description">Programas de formación en ventas, atención al cliente y liderazgo para potenciar las habilidades de tu equipo.</p>
+                        </div>
+                    </div>
+                    <div class="service-card animated-element" style="transition-delay: 0.3s;">
+                        <img src="./images/atencion al cliente.webp" alt="Servicio al cliente" class="service-card-image">
+                        <div class="service-card-content">
+                            <h3 class="service-title">Atención al cliente</h3>
+                            <p class="service-description">Implementamos herramientas como chatbots y asistentes virtuales para captar y mantener a tu clientela.</p>
+                        </div>
+                    </div>
+                    <div class="service-card animated-element" style="transition-delay: 0.4s;">
+                        <img src="./images/marketing digital.webp" alt="Marketing Digital" class="service-card-image">
+                        <div class="service-card-content">
+                            <h3 class="service-title">Marketing Digital</h3>
+                            <p class="service-description">Impulsamos tu presencia online a través de SEO, SEM y campañas en redes sociales para atraer y convertir más clientes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="nosotros" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text animated-element">
+                        <div class="badge">Sobre Nosotros</div>
+                        <h2 class="section-title">¿Quiénes somos?</h2>
+                        <div class="about-description">
+                            <p>Somos un emprendimiento de 16 socios dedicado a la automatización de procesos para optimizar tareas administrativas, reduciendo costos y tiempo para nuestros clientes.</p>
+                            <p>Nuestro equipo de expertos combina creatividad y tecnología de vanguardia para entregar resultados excepcionales que superan las expectativas.</p>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-card animated-element">
+                                <div class="stat-icon">
+                                    <svg viewBox="0 0 113.92 122.88"><path fill="#4ba042" d="M86.18 67.4A27.74 27.74 0 1 1 58.44 95.14 27.74 27.74 0 0 1 86.18 67.4z"/><path d="M46.4 104.45a2.82 2.82 0 1 1 0 5.64H6.57A6.57 6.57 0 0 1 0 103.53v-97A6.57 6.57 0 0 1 6.57 0h80.65a6.57 6.57 0 0 1 6.57 6.57V56a2.83 2.83 0 1 1-5.65 0V6.57a.92.92 0 0 0-.92-.92H6.57a.92.92 0 0 0-.92.92v96.96c0 .51.41.92.92.92h39.83zM23.79 65V59.3h41.72V65zm0-18.57V40.74h46.21v5.69zm0-18.56V22.17h46.21v5.69zm0 55.76V77.87h25.09v5.71z"/><path fill="#fff" d="m70.14 93.29 5.66-.08a22.06 22.06 0 0 1 3.23 2.27 21.81 21.81 0 0 1 2.08 2 81 81 0 0 1 6.48-9 77.13 77.13 0 0 1 8.01-8.32l.55-.21h6.18l-1.25 1.38a132 132 0 0 0-10.48 13.17 129.25 129.25 0 0 0-8.44 14l-.77 1.5-.72-1.52a36.74 36.74 0 0 0-4.77-7.74 31.23 31.23 0 0 0-6.62-6.13l.46-1.51z"/></svg>
+                                </div>
+                                <div class="stat-number">7</div>
+                                <div class="stat-label">Contratos</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-images animated-element">
+                        <div class="image-grid">
+                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=300&h=200&fit=crop" alt="Equipo colaborando">
+                            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=300&h=200&fit=crop" alt="Trabajando en oficina" class="image-offset">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=300&h=200&fit=crop" alt="Presentación de equipo">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&h=200&fit=crop" alt="Espacio de trabajo" class="image-negative-offset">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact">
+            <div class="container">
+                <div class="section-header animated-element">
+                    <div class="badge">Contacto</div>
+                    <h2 class="section-title">¿Listo para comenzar tu proyecto?</h2>
+                    <p class="section-subtitle">Estamos aquí para ayudarte. Contáctanos y descubre cómo podemos impulsar tu negocio.</p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info animated-element">
+                        <h3 class="contact-title">Hablemos de tu proyecto</h3>
+                        <p class="contact-description">Cuéntanos sobre tus objetivos. Nuestro equipo está listo para crear una solución personalizada que se adapte a tus necesidades.</p>
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="contact-icon"><svg viewBox="0 0 122.88 92.12"><path fill="#4285F4" d="M8.36 92.12h19.54V44.67L0 23.76v60.08C0 88.42 3.78 92.12 8.36 92.12z"/><path fill="#34A853" d="M94.97 92.12h19.54c4.67 0 8.36-3.78 8.36-8.36v-60L94.97 44.67V92.12z"/><path fill="#FBBC04" d="M94.97 8.4v36.27l27.91-20.91V12.58c0-10.37-11.82-16.25-20.11-10.05L94.97 8.4z"/><path fill="#EA4335" d="M27.9 44.67 27.9 8.4 61.44 33.57 94.97 8.4 94.97 44.67 61.44 69.76 27.9 44.67z"/><path fill="#C5221F" d="M0 12.58v11.18l27.91 20.91V8.4l-7.8-5.87C11.82-3.66 0 2.29 0 12.58z"/></svg></div>
+                                <div class="contact-details">
+                                    <h4>Email</h4>
+                                    <a href="mailto:lineadmisec@gmail.com">lineadmisec@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <div class="contact-icon"><svg fill="white" viewBox="0 0 105.93 122.88"><path d="M56.92 73.14a1.62 1.62 0 0 1-1.86.06A65.25 65.25 0 0 1 38.92 58.8 51.29 51.29 0 0 1 28.06 35.37c-1.29-8 .12-15.62 4-21.92a27 27 0 0 1 6-6.66A29.23 29.23 0 0 1 56.36 0a26 26 0 0 1 17.46 7.12 26 26 0 0 1 4.66 5.68c4.27 7 5.19 16 3.31 25.12A55.29 55.29 0 0 1 56.92 73.14zm-19 .74V101.7l30.15 13V78.87a65.17 65.17 0 0 0 6.45-5.63v41.18l25-12.59v-56l-9.61 3.7a61.61 61.61 0 0 0 2.38-7.81l9.3-3.59a3.22 3.22 0 0 1 4.07 1.7 3.18 3.18 0 0 1 .22 1.16v62.7a3.23 3.23 0 0 1-2 3L72.72 122.53a3.23 3.23 0 0 1-2.92 0l-35-15.17L4.68 122.53a3.22 3.22 0 0 1-4.33-1.42A3.28 3.28 0 0 1 0 119.66V53.24a3.23 3.23 0 0 1 2.32-3.1l16.38-6.32a58.63 58.63 0 0 0 2.16 6.07L6.46 55.44v59l25-12.59V67.09a76.28 76.28 0 0 0 6.46 6.79zM55.15 14.21A13.72 13.72 0 1 1 41.43 27.93 13.72 13.72 0 0 1 55.15 14.21z"/></svg></div>
+                                <div class="contact-details">
+                                    <h4>Oficina</h4>
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d980.7135459650581!2d-66.94444403044828!3d10.512149017947648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5fe7c3070e99%3A0x67a622cd70e4ef2e!2sInstituto%20Gerencial%20de%20Talentos%20-%20Catia(IGT)!5e0!3m2!1ses-419!2sus!4v1755911408932!5m2!1ses-419!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-card animated-element">
+                        <div id="formContainer">
+                            <h3 class="form-title">Envíanos un mensaje</h3>
+                            <p class="form-subtitle">Completa el formulario y te responderemos en menos de 24 horas.</p>
+                            
+                            <form class="contact-form" id="contactForm">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="name">Nombre completo</label>
+                                        <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="company">Empresa</label>
+                                    <input type="text" id="company" name="company" placeholder="Nombre de tu empresa">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Mensaje</label>
+                                    <textarea id="message" name="message" required placeholder="Cuéntanos sobre tu proyecto..." rows="4"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-full">
+                                    Enviar mensaje
+                                    <span class="send-icon">✈️</span>
+                                </button>
+                            </form>
+                            
+                            <div id="formSuccessMessage" style="display: none; text-align: center; padding: 2rem 0;">
+                                <svg xmlns="http://www.w3.org/2000/svg" style="width: 80px; height: 80px; margin-bottom: 1rem; color: #4CAF50;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <h3 class="form-title">¡Mensaje enviado exitosamente!</h3>
+                                <p class="form-subtitle">Espera nuestra respuesta. Nos pondremos en contacto contigo pronto.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section animated-element">
+                    <p class="footer-description">Impulsamos el crecimiento de tu empresa con soluciones innovadoras y personalizadas.</p>
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@adminline?_t=ZM-8x3ri5Dvjcs&_r=1" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 333335 333336" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" width="100%" height="100%">
+                                <path d="M72464 0h188407c39856 0 72464 32609 72464 72465v188407c0 39855-32608 72464-72464 72464H72464C32608 333336 0 300727 0 260872V72465C0 32609 32608 0 72464 0zm127664 70642c337 2877 825 5661 1461 8341l6304 2c1170 9991 4006 19119 8465 26697 7282 6745 16797 10904 28280 11641v9208c2131 444 4350 746 6659 894v29690c-14847 1462-27841-3426-42981-12531l2324 50847c0 16398 61 23892-8738 38977-20546 35222-58194 36677-82176 18323-12269-4256-23069-12466-29881-23612-19875-32516-1959-85512 55687-90966l-94 7835v1970c3105-646 6365-1144 9794-1468v31311c-12484 2057-20412 5890-24119 12980-7424 14197-4049 26526 3716 34309 16276 2796 34401-8481 31673-43351V70644h33628z" fill="#1a121f"/><path d="M200128 70642c3093 26406 18915 45038 44510 46681v25046l-165 15v-21275c-25595-1642-40311-17390-43404-43796l-27114-1v111095c3912 50005-35050 51490-49955 32531 17482 10934 45867 3826 42501-39202V70641h33628zm-72854 184165c-15319-3153-29249-12306-37430-25689-19875-32516-1959-85512 55687-90966l-94 7835c-53444 8512-58809 65920-44009 89802 5707 9209 15076 15686 25846 19019z" fill="#26f4ee"/><path d="M207892 78985c1761 15036 7293 28119 16454 36903-12866-6655-20630-19315-23062-36905l6609 2zm36580 47511c2181 463 4456 777 6824 929v29690c-14847 1462-27841-3426-42981-12531l2324 50847c0 16398 61 23892-8738 38977-21443 36760-61517 36743-85239 15810 30930 17765 84928 3857 84829-56453v-55496c15141 9105 28134 13993 42981 12530v-24302zm-99036 21460c3105-646 6365-1144 9794-1468v31311c-12484 2057-20412 5890-24119 12980-10441 19964 474 36238 14923 41365-18075-649-36010-19214-23555-43031 3707-7089 10474-10923 22958-12980v-28177z" fill="#fb2c53"/><path d="M201068 77313c3093 26406 17809 42154 43404 43796v29689c-14847 1462-27841-3425-42981-12530v55496c119 72433-77802 77945-100063 42025-14800-23881-9435-81290 44009-89802v30147c-12483 2057-19250 5891-22958 12980-22909 43808 56997 69872 51475-706V77313l27114 1z" fill="#fefefe"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/stories/admin.line3/3636021635627475568?utm_source=ig_story_item_share&igsh=enZvZDNnN2owMGE2" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 132.004 132" width="100%" height="100%">
+                                <defs><linearGradient id="b"><stop offset="0" stop-color="#3771c8"/><stop stop-color="#3771c8" offset=".128"/><stop offset="1" stop-color="#60f" stop-opacity="0"/></linearGradient><linearGradient id="a"><stop offset="0" stop-color="#fd5"/><stop offset=".1" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient><radialGradient id="c" cx="158.429" cy="578.088" r="65" xlink:href="#a" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0 -1.98198 1.8439 0 -1031.402 454.004)" fx="158.429" fy="578.088"/><radialGradient id="d" cx="147.694" cy="473.455" r="65" xlink:href="#b" gradientUnits="userSpaceOnUse" gradientTransform="matrix(.17394 .86872 -3.5818 .71718 1648.348 -458.493)" fx="147.694" fy="473.455"/></defs>
+                                <path fill="url(#c)" d="M65.03 0C37.888 0 29.95.028 28.407.156c-5.57.463-9.036 1.34-12.812 3.22-2.91 1.445-5.205 3.12-7.47 5.468C4 13.126 1.5 18.394.595 24.656c-.44 3.04-.568 3.66-.594 19.188-.01 5.176 0 11.988 0 21.125 0 27.12.03 35.05.16 36.59.45 5.42 1.3 8.83 3.1 12.56 3.44 7.14 10.01 12.5 17.75 14.5 2.68.69 5.64 1.07 9.44 1.25 1.61.07 18.02.12 34.44.12 16.42 0 32.84-.02 34.41-.1 4.4-.207 6.955-.55 9.78-1.28 7.79-2.01 14.24-7.29 17.75-14.53 1.765-3.64 2.66-7.18 3.065-12.317.088-1.12.125-18.977.125-36.81 0-17.836-.04-35.66-.128-36.78-.41-5.22-1.305-8.73-3.127-12.44-1.495-3.037-3.155-5.305-5.565-7.624C116.9 4 111.64 1.5 105.372.596 102.335.157 101.73.027 86.19 0H65.03z" transform="translate(1.004 1)"/><path fill="url(#d)" d="M65.03 0C37.888 0 29.95.028 28.407.156c-5.57.463-9.036 1.34-12.812 3.22-2.91 1.445-5.205 3.12-7.47 5.468C4 13.126 1.5 18.394.595 24.656c-.44 3.04-.568 3.66-.594 19.188-.01 5.176 0 11.988 0 21.125 0 27.12.03 35.05.16 36.59.45 5.42 1.3 8.83 3.1 12.56 3.44 7.14 10.01 12.5 17.75 14.5 2.68.69 5.64 1.07 9.44 1.25 1.61.07 18.02.12 34.44.12 16.42 0 32.84-.02 34.41-.1 4.4-.207 6.955-.55 9.78-1.28 7.79-2.01 14.24-7.29 17.75-14.53 1.765-3.64 2.66-7.18 3.065-12.317.088-1.12.125-18.977.125-36.81 0-17.836-.04-35.66-.128-36.78-.41-5.22-1.305-8.73-3.127-12.44-1.495-3.037-3.155-5.305-5.565-7.624C116.9 4 111.64 1.5 105.372.596 102.335.157 101.73.027 86.19 0H65.03z" transform="translate(1.004 1)"/><path fill="#fff" d="M66.004 18c-13.036 0-14.672.057-19.792.29-5.11.234-8.598 1.043-11.65 2.23-3.157 1.226-5.835 2.866-8.503 5.535-2.67 2.668-4.31 5.346-5.54 8.502-1.19 3.053-2 6.542-2.23 11.65C18.06 51.327 18 52.964 18 66s.058 14.667.29 19.787c.235 5.11 1.044 8.598 2.23 11.65 1.227 3.157 2.867 5.835 5.536 8.503 2.667 2.67 5.345 4.314 8.5 5.54 3.054 1.187 6.543 1.996 11.652 2.23 5.12.233 6.755.29 19.79.29 13.037 0 14.668-.057 19.788-.29 5.11-.234 8.602-1.043 11.656-2.23 3.156-1.226 5.83-2.87 8.497-5.54 2.67-2.668 4.31-5.346 5.54-8.502 1.18-3.053 1.99-6.542 2.23-11.65.23-5.12.29-6.752.29-19.788 0-13.036-.06-14.672-.29-19.792-.24-5.11-1.05-8.598-2.23-11.65-1.23-3.157-2.87-5.835-5.54-8.503-2.67-2.67-5.34-4.31-8.5-5.535-3.06-1.187-6.55-1.996-11.66-2.23-5.12-.233-6.75-.29-19.79-.29zm-4.306 8.65c1.278-.002 2.704 0 4.306 0 12.816 0 14.335.046 19.396.276 4.68.214 7.22.996 8.912 1.653 2.24.87 3.837 1.91 5.516 3.59 1.68 1.68 2.72 3.28 3.592 5.52.657 1.69 1.44 4.23 1.653 8.91.23 5.06.28 6.58.28 19.39s-.05 14.33-.28 19.39c-.214 4.68-.996 7.22-1.653 8.91-.87 2.24-1.912 3.835-3.592 5.514-1.68 1.68-3.275 2.72-5.516 3.59-1.69.66-4.232 1.44-8.912 1.654-5.06.23-6.58.28-19.396.28-12.817 0-14.336-.05-19.396-.28-4.68-.216-7.22-.998-8.913-1.655-2.24-.87-3.84-1.91-5.52-3.59-1.68-1.68-2.72-3.276-3.592-5.517-.657-1.69-1.44-4.23-1.653-8.91-.23-5.06-.276-6.58-.276-19.398s.046-14.33.276-19.39c.214-4.68.996-7.22 1.653-8.912.87-2.24 1.912-3.84 3.592-5.52 1.68-1.68 3.28-2.72 5.52-3.592 1.692-.66 4.233-1.44 8.913-1.655 4.428-.2 6.144-.26 15.09-.27zm29.928 7.97c-3.18 0-5.76 2.577-5.76 5.758 0 3.18 2.58 5.76 5.76 5.76 3.18 0 5.76-2.58 5.76-5.76 0-3.18-2.58-5.76-5.76-5.76zm-25.622 6.73c-13.613 0-24.65 11.037-24.65 24.65 0 13.613 11.037 24.645 24.65 24.645C79.617 90.645 90.65 79.613 90.65 66S79.616 41.35 66.003 41.35zm0 8.65c8.836 0 16 7.163 16 16 0 8.836-7.164 16-16 16-8.837 0-16-7.164-16-16 0-8.837 7.163-16 16-16z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61577819306398" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 509.64" width="100%" height="100%">
+                                <rect fill="#0866FF" width="512" height="509.64" rx="115.612" ry="115.612"/><path fill="#fff" d="M287.015 509.64h-92.858V332.805h-52.79v-78.229h52.79v-33.709c0-87.134 39.432-127.522 124.977-127.522 16.217 0 44.203 3.181 55.651 6.361v70.915c-6.043-.636-16.536-.953-29.576-.953-41.976 0-58.194 15.9-58.194 57.241v27.667h83.618l-14.365 78.229h-69.253V509.64z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section animated-element">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section animated-element">
+                    <h3 class="footer-title">Servicios</h3>
+                    <ul class="footer-links">
+                        <li>Gestión de ventas</li>
+                        <li>Capacitación del personal</li>
+                        <li>Atención al cliente</li>
+                        <li>Marketing Digital</li>
+                    </ul>
+                </div>
+                <div class="footer-section animated-element">
+                    <h3 class="footer-title">Contacto</h3>
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                           <span>lineadmisec@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                           <span>Calle Bolivia, entre 2da av y Panamericana, edif. María, PB, Local 29. Urb. Nueva Caracas.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom animated-element">
+                <p>&copy; 2024 AdminLine. Todos los derechos reservados.</p>
+                <div class="footer-legal">
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Términos de Servicio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" id="chatbotLink" aria-label="Abrir chatbot" title="Abrir chatbot">
+      <img src="./images/ambar3.0.png" alt="Icono del chatbot" />
+    </a>
+
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <span class="toast-icon"></span>
+            <div class="toast-text">
+                <div class="toast-title"></div>
+                <div class="toast-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script>
+      // Tu configuración de Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyAp8Gnx39dYjYI9bMOIsHxSuqX4UdWDya4",
+        authDomain: "adminline-database.firebaseapp.com",
+        projectId: "adminline-database",
+        storageBucket: "adminline-database.appspot.com",
+        messagingSenderId: "43712357414",
+        appId: "1:43712357414:web:b88e5612b619d56dc872e7"
+      };
+
+      // Inicializar Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+
+      let isMobileMenuOpen = false;
+
+      function toggleMobileMenu() {
+        const mobileNav = document.getElementById("mobileNav");
+        const hamburgers = document.querySelectorAll(".hamburger");
+        mobileNav.classList.toggle("active");
+        isMobileMenuOpen = !isMobileMenuOpen;
+        if (isMobileMenuOpen) {
+            hamburgers[0].style.transform = "rotate(45deg) translate(5px, 5px)";
+            hamburgers[1].style.opacity = "0";
+            hamburgers[2].style.transform = "rotate(-45deg) translate(7px, -6px)";
+        } else {
+            hamburgers[0].style.transform = "none";
+            hamburgers[1].style.opacity = "1";
+            hamburgers[2].style.transform = "none";
+        }
+      }
+
+      function closeMobileMenu() {
+        if(isMobileMenuOpen){
+            toggleMobileMenu();
+        }
+      }
+      
+      function showToast(title, message, isError = false) {
+        const toast = document.getElementById("toast");
+        toast.querySelector(".toast-title").textContent = title;
+        toast.querySelector(".toast-message").textContent = message;
+        toast.querySelector(".toast-icon").textContent = isError ? '❌' : '✅';
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 4000);
+      }
+
+      async function handleFormSubmit(event) {
+        event.preventDefault();
+        const form = document.getElementById('contactForm');
+        const formContainer = document.getElementById('formContainer');
+        const successMessage = document.getElementById('formSuccessMessage');
+        const submitButton = form.querySelector('button[type="submit"]');
+
+        submitButton.disabled = true;
+        submitButton.textContent = 'Enviando...';
+        
+        const formData = {
+            name: form.name.value,
+            email: form.email.value,
+            company: form.company.value || 'No especificada',
+            message: form.message.value,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        };
+
+        try {
+            await db.collection("contactMessages").add(formData);
+            
+            form.style.display = 'none';
+            successMessage.style.display = 'block';
+            
+            const title = formContainer.querySelector('.form-title');
+            const subtitle = formContainer.querySelector('.form-subtitle');
+            if (title) title.style.display = 'none';
+            if (subtitle) subtitle.style.display = 'none';
+
+        } catch (error) {
+            console.error("Error al añadir el documento: ", error);
+            showToast("Error", "No se pudo enviar tu mensaje. Inténtalo de nuevo.", true);
+            submitButton.disabled = false;
+            submitButton.innerHTML = 'Enviar mensaje <span class="send-icon">✈️</span>';
+        }
+      }
+      
+      function scrollToSection(sectionId) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const headerHeight = document.querySelector(".header").offsetHeight;
+          const elementPosition = element.offsetTop - headerHeight;
+          window.scrollTo({ top: elementPosition, behavior: "smooth" });
+        }
+      }
+
+      function animateOnScroll() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animated-element').forEach(el => observer.observe(el));
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("contactForm").addEventListener("submit", handleFormSubmit);
+        
+        document.getElementById("chatbotLink").addEventListener("click", function (e) {
+            e.preventDefault();
+            const url = 'https://elevenlabs.io/app/talk-to?agent_id=agent_8901k2py43rke3jsh4kjrm0v3djf';
+            const width = 450, height = 700;
+            const left = (window.screen.width / 2) - (width / 2);
+            const top = (window.screen.height / 2) - (height / 2);
+            window.open(url, 'chatbotPopup', `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes`);
+        });
+
+        animateOnScroll();
+      });
+    </script>
+</body>
+</html>
